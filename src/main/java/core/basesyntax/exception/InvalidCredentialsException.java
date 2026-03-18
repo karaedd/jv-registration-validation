@@ -2,6 +2,6 @@ package core.basesyntax.exception;
 
 public class InvalidCredentialsException extends RuntimeException {
     public InvalidCredentialsException(String message) {
-        super((message));
+        super(message);
     }
 }
