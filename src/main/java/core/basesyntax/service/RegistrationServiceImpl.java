@@ -30,16 +30,16 @@ public class RegistrationServiceImpl implements RegistrationService {
 
         if (!checkLogin(user.getLogin())) {
             throw new InvalidCredentialsException(
-                    "Login must be at least 6 characters");
+                    "Login must be at least" + MIN_LOGIN_LENGTH + " characters");
         }
 
         if (!checkPassword(user.getPassword())) {
             throw new InvalidCredentialsException(
-                    "Password must be at least 6 characters");
+                    "Password must be at least" + MIN_PASSWORD_LENGTH + " characters");
         }
 
         if (!checkAge(user.getAge())) {
-            throw new UnderAgeException("User must be at least 18 years old");
+            throw new UnderAgeException("User must be at least" + MIN_AGE + " years old");
         }
 
         if (storageDao.get(user.getLogin()) != null) {

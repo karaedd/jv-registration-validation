@@ -59,6 +59,7 @@ class RegistrationServiceImplTest {
         User result = registrationService.register(user);
         assertNotNull(result);
         assertEquals(user.getLogin(), result.getLogin());
+        assertTrue(Storage.people.contains(user));
     }
 
     @Test
@@ -89,6 +90,7 @@ class RegistrationServiceImplTest {
         User result = registrationService.register(user);
         assertNotNull(result);
         assertEquals(user.getPassword(), result.getPassword());
+        assertTrue(Storage.people.contains(user));
     }
 
     @Test
@@ -115,6 +117,7 @@ class RegistrationServiceImplTest {
         User result = registrationService.register(user);
         assertNotNull(result);
         assertEquals(user.getAge(), result.getAge());
+        assertTrue(Storage.people.contains(user));
     }
 
     @Test
@@ -123,6 +126,7 @@ class RegistrationServiceImplTest {
         User result = registrationService.register(user);
         assertNotNull(result);
         assertEquals(user.getAge(), result.getAge());
+        assertTrue(Storage.people.contains(user));
     }
 
     @Test
