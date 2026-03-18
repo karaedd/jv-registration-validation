@@ -28,9 +28,14 @@ public class RegistrationServiceImpl implements RegistrationService {
             throw new InvalidCredentialsException("Age can't be null");
         }
 
-        if (!checkCredentials(user.getLogin(), user.getPassword())) {
+        if (!checkLogin(user.getLogin())) {
             throw new InvalidCredentialsException(
-                    "Login and password must be at least 6 characters");
+                    "Login must be at least 6 characters");
+        }
+
+        if (!checkPassword(user.getPassword())) {
+            throw new InvalidCredentialsException(
+                    "Password must be at least 6 characters");
         }
 
         if (!checkAge(user.getAge())) {
@@ -44,8 +49,12 @@ public class RegistrationServiceImpl implements RegistrationService {
         return storageDao.add(user);
     }
 
-    private boolean checkCredentials(String login, String password) {
-        return login.length() >= MIN_LOGIN_LENGTH && password.length() >= MIN_PASSWORD_LENGTH;
+    private boolean checkLogin(String login) {
+        return login.length() >= MIN_LOGIN_LENGTH;
+    }
+
+    private boolean checkPassword(String password) {
+        return password.length() >= MIN_PASSWORD_LENGTH;
     }
 
     private boolean checkAge(int age) {

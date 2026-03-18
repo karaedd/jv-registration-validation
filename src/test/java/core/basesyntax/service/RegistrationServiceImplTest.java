@@ -47,9 +47,10 @@ class RegistrationServiceImplTest {
 
     @Test
     void register_shortLogin_notOk() {
-        User user = createUser("abc", "password", 20);
-        assertThrows(InvalidCredentialsException.class,
-                () -> registrationService.register(user));
+        User user1 = createUser("adm", "password", 20);
+        User user2 = createUser("admin", "password", 20);
+        assertThrows(InvalidCredentialsException.class, () -> registrationService.register(user1));
+        assertThrows(InvalidCredentialsException.class, () -> registrationService.register(user2));
     }
 
     @Test
